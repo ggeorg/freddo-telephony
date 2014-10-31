@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="freddo.telephony.MainActivity" >
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="387dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="PC and Android"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView1"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="With Android running Freddo Telephony, you can send SMS text messages or dial numbers right from your PC."
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ccc" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="Web Applications"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/TextView01"
+                    android:gravity="center"
+                    android:text="Integrate Freddo Telephony services into your Web Application. Open WebPresence, with any HTML5 Web Browser on your PC, to discover and pair with this device."
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ccc" />
+
+                <TextView
+                    android:id="@+id/TextView05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TextView03"
+                    android:layout_centerHorizontal="true"
+                    android:autoLink="web"
+                    android:gravity="center"
+                    android:text="https://github.com/chillblox/freddo-telephony"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ccc" />
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:text="Open Source"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TextView02"
+                    android:layout_centerHorizontal="true"
+                    android:autoLink="web"
+                    android:text="http://dev.arkasoft.com:8040/web-presence"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ccc" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="\u00A9 2014 ArkaSoft LLC"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ccc" />
+
+</RelativeLayout>

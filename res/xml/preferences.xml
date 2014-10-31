@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="GENERAL">
+        <EditTextPreference
+            android:dialogTitle="Target Name"
+            android:key="pref_target_name"
+            android:summary="The name that will show up when trying to connect to Freddo Telephony."
+            android:title="Target Name"/>
+        <CheckBoxPreference
+            android:key="pref_auto_startup"
+            android:summary="Should Freddo Telephony automatically start when you boot your phone?"
+            android:title="Automatically Start" android:defaultValue="true" android:enabled="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="WEB PRESENCE" >
+        <CheckBoxPreference
+            android:key="pref_web_presence"
+            android:summary="Allow web pages to discover Freddo Telephony?"
+            android:title="Web Presence" android:defaultValue="true"/>
+        <EditTextPreference
+            android:defaultValue="ws://dev.arkasoft.com:8040/web-presence/dtalksrv"
+            android:dialogTitle="Web Presence URL"
+            android:key="pref_web_presence_url"
+            android:summary="The Web Presence service URL."
+            android:title="Web Presence URL."/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about_app" >
+        <EditTextPreference
+            android:enabled="false"
+            android:key="app_version"
+            android:persistent="false"
+            android:selectable="false"
+            android:shouldDisableView="false"
+            android:title="@string/version" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

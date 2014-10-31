@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+    <head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        
+        <title>FreddoTelephony v%%VERSION%%</title>
+
+		<!-- Building blocks -->
+		<link rel="stylesheet" href="style/action_menu.css">
+		<link rel="stylesheet" href="style/buttons.css">
+		<link rel="stylesheet" href="style/confirm.css">
+		<link rel="stylesheet" href="style/edit_mode.css">
+		<link rel="stylesheet" href="style/headers.css">
+		<link rel="stylesheet" href="style/input_areas.css">
+		<link rel="stylesheet" href="style/status.css">
+		<link rel="stylesheet" href="style/switches.css">
+		<link rel="stylesheet" href="style/drawer.css">
+		<link rel="stylesheet" href="style/lists.css">
+		<link rel="stylesheet" href="style/progress_activity.css">
+		<link rel="stylesheet" href="style/scrolling.css">
+		<link rel="stylesheet" href="style/seekbars.css">
+		<link rel="stylesheet" href="style/tabs.css">
+		<link rel="stylesheet" href="style/toolbars.css">
+		
+		<link rel="stylesheet" href="style/object_menu.css">
+		
+		<!-- Icons -->
+		<link rel="stylesheet" href="icons/styles/action_icons.css">
+		<link rel="stylesheet" href="icons/styles/media_icons.css">
+		<link rel="stylesheet" href="icons/styles/comms_icons.css">
+		<link rel="stylesheet" href="icons/styles/settings_icons.css">
+		
+		<!-- Transitions -->
+		<link rel="stylesheet" href="transitions.css">
+		
+		<!-- Util CSS: some extra tricks -->
+		<link rel="stylesheet" href="util.css">
+		
+		<!-- Additional markup to make Building Blocks kind of cross browser -->
+		<link rel="stylesheet" href="cross_browser.css">
+
+        <script type="text/javascript" src="dtalk.js"></script>
+    </head>
+    <body>
+        
+    	<section class="skin-comms" role="region" >
+    		<header class="fixed">
+    			<h1>FreddoTelephony <em>v%%VERSION%%</em></h1>
+    		</header>
+    		<header>
+    			<h2>&copy; 2014 ArkaSoft LLC; All Rights Reserved</h2>
+    		</header>
+    		<article class="content scrollable header">
+    			
+    			<header><h2>Dial a Number</h2></header>
+    			
+    			<form>
+					<p>
+						<input id="dialPhoneNo" type="tel" placeholder="Phone number" required>
+						<button type="reset">Clear</button>
+					</p>
+					<button id="doDialBtn" type="submit" onclick="doDial(event);">Dial Number</button>
+    			</form>
+    			
+    			<header><h2>Messaging</h2></header>
+    			
+    			<form class="bottom">
+    				<p>
+						<input id="smsPhoneNo" type="tel" placeholder="Phone numbers (semicolon separated list)">
+						<button type="reset">Clear</button>
+					</p>
+    				<p>
+    					<textarea id="smsMessage" required placeholder="Message"></textarea>
+    				</p>
+    				<button id="sendSMSBtn" type="submit" onclick="sendSMS(event);">Send Message</button>
+    			</form>
+
+    		</article>
+    	</section>
+    	
+		<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 1rem; padding: 3px; color: #ccc; background: #444; z-index: 999999999; text-align: center;">
+			&copy; 2013-2014 ArkaSoft LLC; All Rights Reserved.
+		</div>
+		
+		<a href="https://github.com/chillblox/freddo-telephony/"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 999999999;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+        
+		<script type="text/javascript">
+			var doDialBtn = document.getElementById('doDialBtn');
+			var sendSMSBtn = document.getElementById('sendSMSBtn');
+			doDialBtn.disabled = sendSMSBtn.disabled = true;
+			
+			function startup() {
+				doDialBtn.disabled = sendSMSBtn.disabled = false;
+			}
+			
+			function pause() {
+				doDialBtn.disabled = sendSMSBtn.disabled = true;
+			}
+			
+			function doDial(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				
+				var phoneNo = document.getElementById('dialPhoneNo').value;
+				if (phoneNo) {
+					var request = {
+							dtalk: "1.0",
+							service: "dtalk.service.Dialer",
+							action: "dial",
+							params: phoneNo
+					}
+					DTalk.sendRequest(request, function(e) {
+						console.log(JSON.stringify(e.data));
+					});
+				}
+				return false;
+			}
+			
+			function sendSMS(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				
+				var phoneNo = document.getElementById('smsPhoneNo').value.split(';');
+				var message = document.getElementById('smsMessage').value;
+				if (message) {
+					var request = {
+							dtalk: "1.0",
+							service: "dtalk.service.Messaging",
+							action: "send",
+							params: {
+								phoneNo: phoneNo,
+								message: message
+							}
+					}
+					DTalk.sendRequest(request, function(e) {
+						console.log(JSON.stringify(e.data));
+					});
+				}
+				return false;
+			}
+			
+			DTalk.onopen = function() {
+				startup();
+			};
+			DTalk.onclose = function() {
+				stop();
+			};
+			DTalk.onerror = function() {
+				stop();
+			};
+			DTalk.connect('%%WEBSOCKET_URL%%');
+        </script>
+    </body>
+</html>
