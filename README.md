@@ -12,6 +12,8 @@ An Integration demo of Freddo Telephony with a web page can be found here:
 
 Demo: http://dev.arkasoft.com:8040/web-presence/demos/telephony/
 
+_Note: for the demo to work properly you have to have installed Freddo Telephony in your mobile phone, have your mobile phone connected to WIFI, and to have Web Presence enabled in the settings._
+
 See WIKI about how to do it in your own Web Apps: https://github.com/chillblox/freddo-telephony/wiki
 
 Support us
