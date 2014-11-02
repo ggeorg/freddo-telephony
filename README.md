@@ -10,7 +10,9 @@ Demo
 
 An Integration demo of Freddo Telephony with a web page can be found here:
 
-https://github.com/chillblox/freddo-telephony/wiki
+Demo: http://dev.arkasoft.com:8040/web-presence/demos/telephony/
+
+See WIKI about how to do it in your own Web Apps: https://github.com/chillblox/freddo-telephony/wiki
 
 Support us
 ==========
